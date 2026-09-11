@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: impactcal-api
+    runtime: node
+    region: singapore
+    plan: free
+    branch: main
+    buildCommand: npm install && npm run seed
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: IMPACTCAL_ADMIN_KEY
+        sync: false
+      - key: FRONTEND_URL
+        value: https://impactcal.netlify.app
